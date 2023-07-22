@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import {useEffect} from 'react';
 import './App.css';
-
+import Auth from './components/Auth'
+import Todo from './components/Todo';
+import {addToken} from './reducers/authReducer'
+import {useSelector,useDispatch} from 'react-redux'
 function App() {
+  const token = useSelector((state)=>state.user.token)
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(addToken())
+  },)
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>Welcom back!</p>
+    {
+      token ? <Todo /> :<Auth />
+
+    }  
+      
     </div>
   );
 }
