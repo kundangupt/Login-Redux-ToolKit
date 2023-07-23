@@ -13,7 +13,7 @@ function App() {
   
   return (
     <div className="App">
-      <p>Welcom back!</p>
+      <p>Welcome back!</p>
     {
       token ? <Todo /> :<Auth />
 
